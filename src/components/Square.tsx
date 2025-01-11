@@ -1,4 +1,6 @@
 import React from 'react';
+import XImage from '../assets/x.jpg';
+import OImage from '../assets/o.jpg';
 
 interface SquareProps {
 	value: string | null;
@@ -6,9 +8,18 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({ value, onClick }) => {
+	const renderContent = () => {
+		if (value === 'X') {
+			return <img src={XImage} alt="X" style={imageStyle} />;
+		} else if (value === 'O') {
+			return <img src={OImage} alt="O" style={imageStyle} />;
+		}
+		return null;
+	};
+
 	return (
 		<button style={squareStyle} onClick={onClick}>
-			{value}
+			{renderContent()}
 		</button>
 	);
 };
@@ -16,8 +27,17 @@ const Square: React.FC<SquareProps> = ({ value, onClick }) => {
 const squareStyle: React.CSSProperties = {
 	width: '100px',
 	height: '100px',
-	fontSize: '2rem',
-	fontWeight: 'bold',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	backgroundColor: '#fff',
+	border: '2px solid #000',
+};
+
+const imageStyle: React.CSSProperties = {
+	width: '80%',
+	height: '80%',
+	objectFit: 'contain',
 };
 
 export default Square;

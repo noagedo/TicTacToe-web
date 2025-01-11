@@ -20,6 +20,7 @@ const boardStyle: React.CSSProperties = {
 	display: 'grid',
 	gridTemplateColumns: 'repeat(3, 100px)',
 	gridGap: '5px',
+	backgroundColor: 'black',
 };
 
 export default Board;
